@@ -1,0 +1,134 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .slide {
+     display: none;/* Hide all slide elements by default */
+        margin-left: 60px;
+    }
+
+    .prev,
+    .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover,
+    .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .active,
+    .dot:hover {
+        background-color: #e50b0b;
+    }
+
+    .slider-navigation {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    h1 {
+        font-size: 90px;
+        text-align: center;
+        margin: 0;
+    }
+</style>
+
+<body>
+    <h1>Recipes</h1>
+    <div class="slide">
+
+      <img src="Pictures/re1.avif" alt="Image 1.2" width="400px" height="300px">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <img src="Pictures/re2.avif" alt="Image 1" width="400px" height="300px"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <img src="Pictures/re3.avif" alt="Image 1.2" width="400px" height="300px">
+    </div>
+  
+  
+    <div class="slide">
+      <a><img src="Pictures/re4.avif" alt="Image 2" width="400px" height="320px"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a><img src="Pictures/re5.avif" alt="Image 1" width="400px" height="320px"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a> <img src="Pictures/re6.avif" alt="Image 1" width="400px" height="320px"></a>
+    </div>
+  
+
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+
+    <div class="slider-navigation">
+        <span class="dot" onclick="currentSlide(1)">1</span>
+        <span class="dot" onclick="currentSlide(2)">2</span>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        // Next/previous controls
+        function moveSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
+
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* Hide the images by default */
+    /*.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+ position: absolute;
+ top: 48%;
+  color: rgb(219, 4, 4);
+  font-size: 30px;
+  transition: 0.6s ease;
+  
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.slideshow-container{
+margin-top: 70px;
+padding-left: 310px;
+}
+#result{
+  font-size: 100px;
+}
+</style>
+<body>
+  <div id="result"></div>
+ <h1><marquee>If you want to more info..please click  the image to know more</marquee></h1>
+    <div class="slideshow-container">
+        <div  class="mySlides">
+         <a href="healthyeatng.html" ><img  src="Pictures/r1.avif"  width="800px" height="400px"></a> <h1>11 Thanksgiving Charcuterie Board Ideas Your Guests Will Love</h1>
+        </div>
+      
+        <div class="mySlides">
+         <a  href=""><img src="Pictures/r2.avif"  width="800px" height="400px"></a><h1>Salmon Benefits</h1>
+          
+        </div>
+        <div class="mySlides">
+          <a  href="" ><img src="Pictures/r3.avif"  width="800px" height="400px"></a><h1>Healthy food for kids</h1>
+          
+        </div>
+        <div class="mySlides">
+          <a  href=""> <img src="Pictures/r5.avif" width="800px" height="400px"></a>
+          <h1> Importance of Healthy Food</h1>          
+        </div>
+      </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  
+      
+      <script>
+  var slideIndex =1 ;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  
+  if (n > slides.length) 
+  {slideIndex = 1}    
+  if (n < 1)
+   {slideIndex = slides.length}
+
+   for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  
+  slides[slideIndex-1].style.display = "block";  
+}
+</script>
+</body>
+</html>

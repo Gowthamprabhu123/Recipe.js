@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>earn</title>
+</head>
+
+<style>
+    .bold {
+        margin-left: 100px;
+        font-size: 24px
+    }
+
+    #form {
+        width: 300px;
+        margin: 20vh auto 0 auto;
+        padding: 20px;
+        background-color: rgb(176, 244, 189);
+        border-radius: 20px;
+        font-size: 18px;
+
+    }
+
+    body {
+
+        background: linear-gradient(to left, #93cae2, #94dda5, #cff19f);
+
+        font-family: 'Poppins', sans-serif;
+    }
+
+    #form button {
+        padding: 10px;
+        margin-top: 8px;
+        width: 100%;
+        color: white;
+        background-color: rgb(41, 57, 194);
+        border: none;
+        border-radius: 10px;
+    }
+
+    .input-control input {
+        border: 2px solid#f0f0f0;
+        background-color: whitesmoke;
+        border-radius: 4px;
+        font-size: 15px;
+    }
+
+    .input-control1 input {
+        padding: 40px;
+        width: 220px;
+        background-color: whitesmoke;
+        border: 3px solid#f0f0f0;
+        border-radius: 4px;
+    }
+
+    .input-control input:focus {
+        outline: 0;
+        font-size: 19px;
+    }
+
+    .input-control.success input {
+        border-color: #09c372;
+    }
+
+    .input-control.error input {
+        border-color: #f69c9d;
+    }
+
+    .input-control .error {
+        color: #f20e0e;
+        font-size: 15px;
+        height: 13px;
+    }
+
+    .input-control1 input:focus {
+        outline: 0;
+        font-size: 19px;
+    }
+
+    .input-control1.success input {
+        border-color: #09c372;
+    }
+
+    .input-control1.error input {
+        border-color: #f69c9d;
+    }
+
+    .input-control1 .error {
+        color: #f20e0e;
+        font-size: 15px;
+        height: 13px;
+    }
+</style>
+
+<body>
+
+    <div class="bold">
+        <h2> Submit your Article and Get Paid</h2>
+        <p>1.Write health, food and news articles to earn money.<br><br>
+
+            2. Earn $10 for every 100 words you write.<br><br>
+
+            3.Each 1200-word article can earn you $120.<br><br>
+
+            4. Accepting AI-generated articles (must be plagiarism-free)<br><br>
+
+            5. You can submit five articles daily<br><br>
+
+            6.Payment methods available, Paypal, Payoneer and Western Union.<br><br>
+
+            7. Submit articles from anywhere in the world, including USA, Canada ,India, Pakistan, Bangladesh, UAE, and
+            KSA</p><br><br><br><br><br>
+    </div>
+
+
+
+    <form id="form" action="/">
+        <div class="input-control">
+            <label for="username">Name</label> <br>
+            <input id="username" name="username" type="text">
+            <div class="error"></div> <br>
+        </div>
+
+        <div class="input-control">
+            <label for="email">Email Address</label><br>
+            <input id="email" name="email" type="text"><br>
+            <div class="error"></div><br>
+        </div>
+        <div class="input-control">
+            <label for="number">Phone Number</label><br>
+            <input id="number" name="number" type="text">
+            <div class="error"></div><br>
+        </div>
+        <div class="input-control">
+            <label for="loc">Location</label><br>
+            <input id="loc" name="loc" type="text">
+            <div class="error"></div><br>
+        </div>
+        <div class="input-control1">
+            <label for="art"> Your Article</label><br>
+            <input id="art" name="art" type="text">
+            <div class="error"></div><br>
+        </div><br>
+        <button type="submit">Submit</button>
+    </form>
+
+
+    <script>
+        const form = document.getElementById('form');
+        const username = document.getElementById('username');
+        const email = document.getElementById('email');
+        const number = document.getElementById('number');
+        const loc = document.getElementById('loc');
+        const art = document.getElementById('art');
+
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+
+            validateInputs();
+        });
+
+        const validateInputs = () => {
+            const usernameValue = username.value.trim();
+            const emailValue = email.value.trim();
+            const numberValue = number.value.trim();
+            const locValue = loc.value.trim();
+            const artValue = art.value.trim();
+
+            if (usernameValue === '') {
+                setError(username, 'Please Enter Your Name');
+            }
+            else {
+                setSuccess(username);
+            }
+
+            if (emailValue === '') {
+                setError(email, 'Please Enter Your Mail');
+            }
+            else if (!isValidEmail(emailValue)) {
+                setError(email, 'Provide a Valid Email Address');
+            }
+            else {
+                setSuccess(email);
+            }
+
+
+            if (numberValue === '') {
+                setError(number, 'Please Enter Your Phone Number');
+            }
+            else if (!isValidNumber(numberValue)) {
+                setError(number, 'Provide a Number');
+            }
+             else {
+                setSuccess(number);
+            }
+
+
+            if (locValue === '') {
+                setError(loc, 'Enter your Location');
+            } else {
+                setSuccess(loc);
+            }
+
+
+            if (artValue === '') {
+                setError(art, 'Enter your Valuabe Article');
+            } else if (artValue.length < 5) {
+                setError(art, 'Article must be above 5 words');
+            } else {
+                setSuccess(art);
+            }
+        };
+        const setError = (element, message) => {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error')
+            errorDisplay.innerText = message;
+            
+            inputControl.classList.add('error');
+            inputControl.classList.remove('success')
+
+        }
+
+
+        const setSuccess = element => {
+            const inputControl = element.parentElement;
+            const errorDisplay = inputControl.querySelector('.error')
+            errorDisplay.innerText = '';
+            inputControl.classList.add('success');
+            inputControl.classList.remove('error');
+        };
+
+        const isValidEmail = email => {
+            const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        const isValidNumber = number=>{
+            const re1=/^-?\d*\.?\d*$/
+            return re1.test(Number(number));
+        }
+
+    </script>
+</body>
+
+</html>
